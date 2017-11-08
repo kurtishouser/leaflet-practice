@@ -1,12 +1,22 @@
-import './map.scss'
-import L from 'leaflet'
-import { Component } from '../component'
+import './map.scss';
+import L from 'leaflet';
 
-const template = '<div ref="mapContainer" class="map-container"></div>'
+import { Component } from '../component';
+
+const template = '<div ref="mapContainer" class="map-container"></div>';
+
+// hack for webpack(?) issue
+// https://github.com/PaulLeCam/react-leaflet/issues/255#issuecomment-261904061
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
 
 /**
  * Leaflet Map Component
- * Render GoT map items, and provide user interactivity.
+ * Render Resilience Map items, and provide user interactivity.
  * @extends Component
  */
 export class Map extends Component {
@@ -29,5 +39,11 @@ export class Map extends Component {
     this.map.setView(new L.LatLng(37.78, -122.44), 14);
     this.map.zoomControl.setPosition('bottomright') // Position zoom control
     this.map.addLayer(osm);
+  }
+
+  addMarkers (markers) {
+    markers.forEach(m => {
+      L.marker([m.coordinates[1], m.coordinates[0]]).addTo(this.map).bindPopup(m.title);
+    });
   }
 }
