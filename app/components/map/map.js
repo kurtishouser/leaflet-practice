@@ -87,7 +87,6 @@ export class Map extends Component {
   }
 
   onEachLocation (layer) {
-    console.log('layer', layer);
     var update_btn = `<button class ='update btn'>Update</button>`
     var delete_btn = `<button class ='delete btn'>Delete</button>`
     var saveUpdates_btn = `<button class ='save_updates btn' style='display: none'>Save Changes</button>`
