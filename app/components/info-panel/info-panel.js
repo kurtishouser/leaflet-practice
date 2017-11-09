@@ -18,4 +18,13 @@ export class InfoPanel extends Component {
     // Toggle info panel on title click
     this.refs.title.addEventListener('click', () => this.refs.container.classList.toggle('info-active'))
   }
+
+  showInfo (eventDetail) {
+    const { _id, title, description, author, asset } = eventDetail;
+    // Display location title
+    this.refs.title.innerHTML = `<h1>${title}</h1>`;
+
+    this.refs.content.innerHTML = `<h3>${asset.toUpperCase()}</h3><p>Description:<br>${description}</p><p>Author:<br>${author}</p>`
+  }
+
 }

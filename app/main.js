@@ -26,7 +26,7 @@ class ViewController {
     // Initialize Map
     this.mapComponent = new Map('map-placeholder', {
       events: { locationSelected: event => {
-        console.log(event.detail);
+        this.infoComponent.showInfo(event.detail);
       }}
     });
   }

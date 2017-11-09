@@ -36,7 +36,7 @@ export class Map extends Component {
     var osm = new L.TileLayer(osmUrl, { minZoom: 8, maxZoom: 20, attribution: osmAttrib });
 
     // start the map in Northern San Francisco
-    this.map.setView(new L.LatLng(37.78, -122.44), 14);
+    this.map.setView(new L.LatLng(37.78, -122.44), 13);
     this.map.zoomControl.setPosition('bottomright') // Position zoom control
     this.map.addLayer(osm);
 
@@ -48,7 +48,7 @@ export class Map extends Component {
       .setLatLng(e.latlng)
       .setContent(
         [
-          '<h1>Add location',
+          '<h1>Add location</h1>',
           '<table>',
           '    <tr><td colspan="2"></td></tr>',
           '    <tr><td>Title</td><td><input id="titleTbx" type="text" /></td></tr>',
@@ -72,6 +72,8 @@ export class Map extends Component {
         ]
       .join('\n'))
       .openOn(this);
+
+    // console.log(popup);
   }
 
   addMarkers (markers) {
@@ -93,6 +95,7 @@ export class Map extends Component {
     var popupContent = `<div style="text-align: left;"><div>Title: ${layer.title}</div><div>Description: ${layer.description}</div><div>Author: ${layer.author}</div><div>Asset: ${layer.asset}</div></div>${update_btn} ${delete_btn} ${saveUpdates_btn} `
     layer.bindPopup(popupContent);
     layer.on({ click: (e) => {
+      console.log(e);
       const { _id, title, description, author, asset } = layer;
       this.triggerEvent('locationSelected', { _id, title, description, author, asset });
     }})
