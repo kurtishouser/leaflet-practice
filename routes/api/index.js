@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const GeoJSON = require('geojson');
-const Marker = require('../../models/markerModel.js')
+const request = require('request');
+const Marker = require('../../models/markerModel.js');
 
 router.route('/markers')
   .post((req, res) => {
@@ -10,6 +11,7 @@ router.route('/markers')
     res.status(201).send(marker);
   })
   .get((req, res) => {
+    console.log('GET markers');
     const query = {};
     if (req.query.genre) {
       query.genre = req.query.genre;
@@ -56,7 +58,7 @@ router.route('/markers/:markerId')
   //     }
   //   });
   // })
-  // Update Marker 
+  // Update Marker
   .put((req, res) => {
     if (req.body._id) {
       delete req.body._id;
@@ -73,7 +75,7 @@ router.route('/markers/:markerId')
       }
     });
   })
-  // This is updating the data by marker id 
+  // This is updating the data by marker id
   .post((req, res) => {
     if (req.body._id) {
       delete req.body._id;
@@ -90,7 +92,7 @@ router.route('/markers/:markerId')
       }
     });
 
-    
+
   })
   .delete((req, res) => {
     req.marker.remove((err) => {

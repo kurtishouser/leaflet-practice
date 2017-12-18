@@ -22,7 +22,6 @@ let foodIcon = L.AwesomeMarkers.icon({
   prefix: 'fa',
   iconColor: 'black'
   })
-
 let waterIcon = L.AwesomeMarkers.icon({
   icon: 'tint',
   markerColor: 'blue',
@@ -211,6 +210,8 @@ function initmap() {
   // start the map in Northern San Francisco
   map.setView(new L.LatLng(37.80, -122.42), 14);
   map.addLayer(osm);
+  map.zoomControl.setPosition('bottomright');
+  var sidebar = L.control.sidebar('sidebar').addTo(map);
 
   getMarkers();
 

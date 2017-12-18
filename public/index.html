@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="./leaflet.awesome-markers.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
         crossorigin="" />
+    <link rel="stylesheet" href="./css/leaflet-sidebar.css" />
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
-    
+
 </head>
 
 <body>
@@ -27,8 +28,8 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>        
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="">RESILIENCY MAP SF</a>
       </div>
@@ -40,25 +41,56 @@
             <li><a href="#">Placeholder</a></li>
               -->
           </ul>
-        </div><!-- end navbar-collapse -->  
+        </div><!-- end navbar-collapse -->
     </header>
 
+
     <div class="map-holder" style="height: 100%">
-    <div id="mapid">
-    </div>
-    <div ref="panel" class="layer-panel">
+
+      <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+          <ul role="tablist">
+            <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+          </ul>
+
+          <ul role="tablist">
+            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+          </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+          <div class="sidebar-pane" id="home">
+            <h1 class="sidebar-header">
+              Menu
+              <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+            </h1>
+          </div>
+
+          <div class="sidebar-pane" id="settings">
+            <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+          </div>
+        </div>
+      </div>
+
+      <div id="mapid"></div>
+
+      <div ref="panel" class="layer-panel">
         <div ref="toggle" class="layer-toggle">Layers</div>
         <div class="layer-panel-content">
           <h3>Layers</h3>
           <div ref="buttons" id="layer-buttons" class="layer-buttons"></div>
         </div>
+      </div>
+
     </div>
-    </div>
-    
+
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
         crossorigin=""></script>
     <script src="./leaflet.awesome-markers.js"></script>
+    <script src="./js/leaflet-sidebar.js"></script>
     <script type='text/javascript' src='/index.js'></script>
 </body>
 
