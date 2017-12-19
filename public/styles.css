@@ -35,9 +35,9 @@ html{
 .layer-toggle {
     display: none;
 }
-  
+
 .layer-panel {
-  position: absolute;
+  /* position: absolute; */
   top: 24px;
   right: 24px;
   padding: 12px;
@@ -52,17 +52,25 @@ html{
   text-align: center;
   margin: 0 auto;
   }
-  
+
 .layer-button {
   color: grey;
   border-top: 1px solid #2574A9;
   padding: 6px;
   cursor: pointer;
   user-select: none;
+  position: relative;
 }
 
 div.toggle-active {
   color: #2574A9;
+}
+
+.layer-buttons{
+  width: 100%;
+  height: 100%;
+  position: relative;
+
 }
 
 

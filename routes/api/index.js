@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const GeoJSON = require('geojson');
-const request = require('request');
 const Marker = require('../../models/markerModel.js');
+const request = require('request');
+const postmanCollection = require("../../Postman/ResiliencyDatasets.postman_collection.json");
 
 router.route('/markers')
   .post((req, res) => {
@@ -124,7 +125,7 @@ router.route('/geojson').get((req, res) => {
 //Routes to expose GEOJSON data from SF Gov endpoints
 // Privately Owned Public Open Spaces (POPOS)
 router.get('/popos', (req, res) => {
-  request('https://data.sfgov.org/resource/fff3ub7-d4yy.geojson', (error, response, body) => {
+  request('https://data.sfgov.org/resource/3ub7-d4yy.geojson', (error, response, body) => {
     res.send(JSON.parse(body));
   })
 })
@@ -192,6 +193,15 @@ router.get('/sffindneighborhoods', (req, res) => {
   });
 });
 
+router.route('/postmancollection').get((req, res) => {
+  res.json(postmanCollection);
+});
+
+/*
+router.get('/postmancollection', (req, res) => {
+  res.send(JSON.parse(postmanCollection));
+});
+*/
 
 
 
